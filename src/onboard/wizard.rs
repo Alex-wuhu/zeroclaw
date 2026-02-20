@@ -569,7 +569,7 @@ fn default_model_for_provider(provider: &str) -> String {
         "xai" => "grok-4-1-fast-reasoning".into(),
         "perplexity" => "sonar-pro".into(),
         "fireworks" => "accounts/fireworks/models/llama-v3p3-70b-instruct".into(),
-        "novita" => "meta-llama/llama-3.1-70b-instruct".into(),
+        "novita" => "minimax/minimax-m2.5".into(),
         "together-ai" => "meta-llama/Llama-3.3-70B-Instruct-Turbo".into(),
         "cohere" => "command-a-03-2025".into(),
         "moonshot" => "kimi-k2.5".into(),
@@ -764,21 +764,19 @@ fn curated_models_for_provider(provider_name: &str) -> Vec<(String, String)> {
         ],
         "novita" => vec![
             (
-                "meta-llama/llama-3.1-70b-instruct".to_string(),
-                "Llama 3.1 70B Instruct".to_string(),
+                "minimax/minimax-m2.5".to_string(),
+                "MiniMax M2.5".to_string(),
             ),
             (
-                "meta-llama/llama-3.1-8b-instruct".to_string(),
-                "Llama 3.1 8B Instruct".to_string(),
+                "deepseek/deepseek-v3.2".to_string(),
+                "DeepSeek V3.2".to_string(),
             ),
             (
-                "deepseek/deepseek-v3".to_string(),
-                "DeepSeek V3".to_string(),
+                "qwen/qwen3.5-397b-a17b".to_string(),
+                "Qwen3.5 397B-A17B".to_string(),
             ),
-            (
-                "qwen/qwen2.5-72b-instruct".to_string(),
-                "Qwen 2.5 72B Instruct".to_string(),
-            ),
+            ("zai-org/glm-5".to_string(), "GLM-5".to_string()),
+            ("moonshotai/kimi-k2.5".to_string(), "Kimi K2.5".to_string()),
         ],
         "together-ai" => vec![
             (
