@@ -1608,9 +1608,7 @@ pub async fn run(
             }
 
             // Auto-save conversation turns (skip short/trivial messages)
-            if config.memory.auto_save
-                && user_input.chars().count() >= AUTOSAVE_MIN_MESSAGE_CHARS
-            {
+            if config.memory.auto_save && user_input.chars().count() >= AUTOSAVE_MIN_MESSAGE_CHARS {
                 let user_key = autosave_memory_key("user_msg");
                 let _ = mem
                     .store(&user_key, &user_input, MemoryCategory::Conversation, None)
