@@ -569,6 +569,7 @@ fn default_model_for_provider(provider: &str) -> String {
         "xai" => "grok-4-1-fast-reasoning".into(),
         "perplexity" => "sonar-pro".into(),
         "fireworks" => "accounts/fireworks/models/llama-v3p3-70b-instruct".into(),
+        "novita" => "meta-llama/llama-3.1-70b-instruct".into(),
         "together-ai" => "meta-llama/Llama-3.3-70B-Instruct-Turbo".into(),
         "cohere" => "command-a-03-2025".into(),
         "moonshot" => "kimi-k2.5".into(),
@@ -759,6 +760,24 @@ fn curated_models_for_provider(provider_name: &str) -> Vec<(String, String)> {
             (
                 "accounts/fireworks/models/mixtral-8x22b-instruct".to_string(),
                 "Mixtral 8x22B".to_string(),
+            ),
+        ],
+        "novita" => vec![
+            (
+                "meta-llama/llama-3.1-70b-instruct".to_string(),
+                "Llama 3.1 70B Instruct".to_string(),
+            ),
+            (
+                "meta-llama/llama-3.1-8b-instruct".to_string(),
+                "Llama 3.1 8B Instruct".to_string(),
+            ),
+            (
+                "deepseek/deepseek-v3".to_string(),
+                "DeepSeek V3".to_string(),
+            ),
+            (
+                "qwen/qwen2.5-72b-instruct".to_string(),
+                "Qwen 2.5 72B Instruct".to_string(),
             ),
         ],
         "together-ai" => vec![
@@ -967,6 +986,7 @@ fn supports_live_model_fetch(provider_name: &str) -> bool {
             | "astrai"
             | "venice"
             | "fireworks"
+            | "novita"
             | "cohere"
             | "moonshot"
             | "glm"
@@ -992,6 +1012,7 @@ fn models_endpoint_for_provider(provider_name: &str) -> Option<&'static str> {
             "xai" => Some("https://api.x.ai/v1/models"),
             "together-ai" => Some("https://api.together.xyz/v1/models"),
             "fireworks" => Some("https://api.fireworks.ai/inference/v1/models"),
+            "novita" => Some("https://api.novita.ai/openai/v1/models"),
             "cohere" => Some("https://api.cohere.com/compatibility/v1/models"),
             "moonshot" => Some("https://api.moonshot.ai/v1/models"),
             "glm" => Some("https://api.z.ai/api/paas/v4/models"),
@@ -1627,6 +1648,7 @@ fn setup_provider(workspace_dir: &Path) -> Result<(String, String, String, Optio
         1 => vec![
             ("groq", "Groq — ultra-fast LPU inference"),
             ("fireworks", "Fireworks AI — fast open-source inference"),
+            ("novita", "Novita AI — affordable open-source inference"),
             ("together-ai", "Together AI — open-source model hosting"),
             ("nvidia", "NVIDIA NIM — DeepSeek, Llama, & more"),
         ],
@@ -1918,6 +1940,7 @@ fn setup_provider(workspace_dir: &Path) -> Result<(String, String, String, Optio
                 "deepseek" => "https://platform.deepseek.com/api_keys",
                 "together-ai" => "https://api.together.xyz/settings/api-keys",
                 "fireworks" => "https://fireworks.ai/account/api-keys",
+                "novita" => "https://novita.ai/settings/key-management",
                 "perplexity" => "https://www.perplexity.ai/settings/api",
                 "xai" => "https://console.x.ai",
                 "cohere" => "https://dashboard.cohere.com/api-keys",
@@ -2166,6 +2189,7 @@ fn provider_env_var(name: &str) -> &'static str {
         "xai" => "XAI_API_KEY",
         "together-ai" => "TOGETHER_API_KEY",
         "fireworks" | "fireworks-ai" => "FIREWORKS_API_KEY",
+        "novita" => "NOVITA_API_KEY",
         "perplexity" => "PERPLEXITY_API_KEY",
         "cohere" => "COHERE_API_KEY",
         "kimi-code" => "KIMI_CODE_API_KEY",
